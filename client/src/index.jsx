@@ -16,6 +16,18 @@ class App extends React.Component {
   search (term) {
     console.log(`${term} was searched`);
     // TODO
+    // var data = {term:term}
+
+        $.ajax({
+        // This is the url you should use to communicate with the parse API server.
+        // about the url 
+        url: '/repos/import',
+        type: 'POST',
+        data: JSON.stringify(term),
+        //?? content type
+        contentType: 'application/json'
+      });
+     
   }
 
   render () {
