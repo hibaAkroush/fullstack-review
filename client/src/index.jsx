@@ -15,7 +15,21 @@ class App extends React.Component {
 
   search (term) {
     console.log(`${term} was searched`);
-    // TODO
+    var username = {"term":term};
+
+        $.ajax({
+        url: '/repos/import',
+        type: 'POST',
+        data: JSON.stringify(username),
+        contentType: 'application/json',
+        success: function (data) {
+          console.log('chatterbox: Message sent');
+        },
+        error: function (data) {
+          console.error('chatterbox: Failed to send message', data);
+        }
+      });
+     
   }
 
   render () {
