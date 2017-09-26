@@ -15,17 +15,19 @@ class App extends React.Component {
 
   search (term) {
     console.log(`${term} was searched`);
-    // TODO
-    // var data = {term:term}
+    var username = {"term":term};
 
         $.ajax({
-        // This is the url you should use to communicate with the parse API server.
-        // about the url 
         url: '/repos/import',
         type: 'POST',
-        data: JSON.stringify(term),
-        //?? content type
-        contentType: 'application/json'
+        data: JSON.stringify(username),
+        contentType: 'application/json',
+        success: function (data) {
+          console.log('chatterbox: Message sent');
+        },
+        error: function (data) {
+          console.error('chatterbox: Failed to send message', data);
+        }
       });
      
   }
